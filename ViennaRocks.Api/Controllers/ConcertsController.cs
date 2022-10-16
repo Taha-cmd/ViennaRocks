@@ -14,13 +14,10 @@ public class ConcertsController : Controller
         _ticketMasterClient = ticketMasterClient;
     }
 
-    // AoLgBamyDUK2uP1WGmIwDPhpIv5pYR04
-
     [HttpGet]
     [Route("/concerts")]
     public async Task<IReadOnlyCollection<Concert>> GetConcerts()
     {
-        var x = await _ticketMasterClient.GetConcerts();
-        return x;
+        return await _ticketMasterClient.GetConcerts();
     }
 }

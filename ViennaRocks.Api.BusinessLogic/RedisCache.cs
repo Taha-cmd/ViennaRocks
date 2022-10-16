@@ -20,14 +20,14 @@ public class RedisCache : ICache
         return value is not null ? JsonConvert.DeserializeObject<T>(value) : null;
     }
 
-    public T Set<T>(string key, T value) where T : class
+    public T Set<T>(string key, T value, TimeSpan timeout) where T : class
     {
-        var timeout = new DistributedCacheEntryOptions()
+        var timeoutOptions = new DistributedCacheEntryOptions()
         {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(24)
+            AbsoluteExpirationRelativeToNow = timeout
         };
 
-        _cache.SetString(key, JsonConvert.SerializeObject(value), timeout);
+        _cache.SetString(key, JsonConvert.SerializeObject(value), timeoutOptions);
 
         return Get<T>(key);
     }

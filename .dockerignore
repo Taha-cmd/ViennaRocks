@@ -2,6 +2,7 @@
 .env
 .git
 .gitignore
+**/launchSettings.json
 **/.project
 **/.settings
 **/.toolstarget

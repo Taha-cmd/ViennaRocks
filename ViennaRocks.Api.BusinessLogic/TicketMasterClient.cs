@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using ViennaRocks.Api.BusinessLogic.Contract;
 using ViennaRocks.Api.Models;
@@ -10,18 +11,20 @@ public class TicketMasterClient : ITicketMasterClient
     private readonly HttpClient _httpClient;
     private readonly ICache _cache;
     private readonly ILogger<TicketMasterClient> _logger;
+    private readonly IConfiguration _config;
     private readonly string _apiKey;
     private readonly string _apiBaseUrl;
 
     private const string CacheKey = "concerts";
 
-    public TicketMasterClient(HttpClient httpClient, ICache cache, ILogger<TicketMasterClient> logger)
+    public TicketMasterClient(HttpClient httpClient, ICache cache, ILogger<TicketMasterClient> logger, IConfiguration config)
     {
         _httpClient = httpClient;
         _cache = cache;
         _logger = logger;
+        _config = config;
         _apiKey = Environment.GetEnvironmentVariable("TicketMasterApiKey") ?? throw new NullReferenceException("api key not found");
-        _apiBaseUrl = Environment.GetEnvironmentVariable("TicketMasterApiBaseUrl") ?? throw new NullReferenceException("api base url");
+        _apiBaseUrl = _config["TicketMasterApiBaseUrl"] ?? throw new NullReferenceException("api base url not found");
     }
 
     public async Task<IReadOnlyCollection<Concert>> GetConcerts()
@@ -61,7 +64,7 @@ public class TicketMasterClient : ITicketMasterClient
             }
         )!.ToArray()!;
 
-        return _cache.Set(CacheKey, results);
+        return _cache.Set(CacheKey, results, TimeSpan.FromHours(24));
     }
 }
 

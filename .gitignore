@@ -6,5 +6,7 @@ riderModule.iml
 .idea
 .vs
 
-Environments/**
-ViennaRocks.Api/Properties/launchsettings.json
+Environments/.env*
+!Environments/.env.template
+!Environments/.env.demo
+ViennaRocks.Api/Properties/launchSettings.json
