@@ -5,8 +5,10 @@ riderModule.iml
 /_ReSharper.Caches/
 .idea
 .vs
+.vscode
 
 Environments/.env*
 !Environments/.env.template
 !Environments/.env.demo
 ViennaRocks.Api/Properties/launchSettings.json
+.fake

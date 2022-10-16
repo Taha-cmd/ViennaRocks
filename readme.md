@@ -2,7 +2,7 @@
 
 Love going to metal and rock concerts in Vienna? Well, this demo application will help you headbanging!
 
-The app is a containerized rest api, that in turn calls the TicketMaster api to display to top 20 metal and rock concerts in Vienna in a simplified schema. The application was designed to follow the [12 factor app](https://12factor.net/) philosophy.
+The app is a containerized rest api, that in turn calls the [TicketMaster api](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/) to display to top 20 metal and rock concerts in Vienna in a simplified schema. The application was designed to follow the [12 factor app](https://12factor.net/) philosophy.
 
 # Endpoints
 
@@ -23,6 +23,8 @@ Run the PowerShell script `.\StartDemo.ps1`, which basically does two things:
 
 If you don't have PowerShell on your system, you can of course run the two simple steps manually in the CLI of your choice.
 
+Navigate to [localhost:8080/concerts](http://localhost:8080/concerts) or [localhost:8080/swagger](http://localhost:8080/swagger)
+
 ### Architecture
 
 Each instance of the application contains two containers:
@@ -36,4 +38,4 @@ A running instance of the application requires an `environment`, which is a logi
 
 ### Create an Environment
 
-To create an Environment called `dev`, create a file called `.env.dev` in the `Environments` folder. See `Environments/.env.template` to know what parameters an .env file should include. Before running the application, set the environment variable `env` to `dev`. When running the application `docker-compose-yml` will automatically look for `Environment/.env.dev` when building the container. A `demo` environment has already been created for you.
+To create an Environment called `dev`, create a file called `.env.dev` in the `Environments` folder. See `Environments/.env.template` to know what parameters an .env file should include. Before running the application, set the environment variable `env` to `dev`. When running the application `docker-compose.yml` will automatically look for `Environment/.env.dev` when building the container. A `demo` environment has already been created for you.
