@@ -39,3 +39,10 @@ A running instance of the application requires an `environment`, which is a logi
 ### Create an Environment
 
 To create an Environment called `dev`, create a file called `.env.dev` in the `Environments` folder. See `Environments/.env.template` to know what parameters an .env file should include. Before running the application, set the environment variable `env` to `dev`. When running the application `docker-compose.yml` will automatically look for `Environment/.env.dev` when building the container. A `demo` environment has already been created for you.
+
+# Ideas for the future
+
+- Create a CI/CD pipeline
+- Add tests
+- Include the hosting infrastructure in the project (Terraform)
+- Kubernetes
