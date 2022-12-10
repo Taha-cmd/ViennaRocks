@@ -44,5 +44,10 @@ To create an Environment called `dev`, create a file called `.env.dev` in the `E
 
 - Create a CI/CD pipeline
 - Add tests
-- Include the hosting infrastructure in the project (Terraform)
+- Include the hosting infrastructure in the project (Terraform or bicep)
 - Kubernetes
+  - environments as configmaps and secrets :white_check_mark:
+  - deployments and services :white_check_mark:
+  - ingress
+  - helm
+  - volume for redis

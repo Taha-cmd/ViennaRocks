@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: viennarocks
+data:
+  ASPNETCORE_ENVIRONMENT: DEVELOPMENT
+  REDIS_URL: 'redis:6379'

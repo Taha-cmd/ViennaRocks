@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = Environment.GetEnvironmentVariable("RedisConnectionString");
+    options.Configuration = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRING");
 });
 
 builder.Services.AddSingleton<ITicketMasterClient, TicketMasterClient>();

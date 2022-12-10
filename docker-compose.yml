@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      - RedisConnectionString=redis:6379
+      - REDIS_CONNECTION_STRING=redis:6379,password=8Cz^!Kbs9m05
     env_file:
       - "Environments/.env.${env}"
     depends_on:
@@ -16,6 +16,11 @@ services:
     ports:
       - 6379
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PASSWORD=8Cz^!Kbs9m05
+    volumes:
+      - data:/data
 
+volumes:
+  data:
+  
 
