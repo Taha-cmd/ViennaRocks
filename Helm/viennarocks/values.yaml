@@ -1,0 +1,11 @@
+# isDevelopment: # true / false
+# namespace: 
+
+# app:
+  # name: # name of the application
+  # replicas: # how many pods
+
+# secrets:
+  # TicketMasterApiKey: 
+  # REDIS_PASSWORD: 
+  # REDIS_CONNECTION_STRING: 

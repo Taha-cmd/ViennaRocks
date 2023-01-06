@@ -1,7 +1,7 @@
 
 [CmdletBinding()]
 param(
-    [string] $Environment
+    [Parameter(Mandatory)][string] $Environment
 )
 
 $environmentPath = ".\Deployment\Environments\$Environment"

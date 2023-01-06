@@ -49,5 +49,13 @@ To create an Environment called `dev`, create a file called `.env.dev` in the `E
   - environments as configmaps and secrets :white_check_mark:
   - deployments and services :white_check_mark:
   - ingress
-  - helm
+  - helm chart :white_check_mark:
   - volume for redis
+
+# Deployment Scenarios
+
+it is a mess for now.
+
+- Helm
+- Docker Compose
+- Kubernetes

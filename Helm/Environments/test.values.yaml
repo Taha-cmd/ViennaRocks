@@ -1,0 +1,11 @@
+isDevelopment: false
+namespace: test
+
+app:
+  name: "concertfinder-test"
+  replicas: 2
+
+secrets:
+  TicketMasterApiKey: "AoLgBamyDUK2uP1WGmIwDPhpIv5pYR04"
+  REDIS_PASSWORD: "8Cz^!Kbs9m05"
+  REDIS_CONNECTION_STRING: "redis:6379,password=8Cz^!Kbs9m05"

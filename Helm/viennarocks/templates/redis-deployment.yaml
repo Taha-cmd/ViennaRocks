@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}-redis
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}-redis
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}-redis
+    spec:
+      containers:
+      - name: redis
+        env:
+          - name: REDIS_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: {{ .Release.Name }}-secrets
+                key: REDIS_PASSWORD
+        image: bitnami/redis:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 6379
+
