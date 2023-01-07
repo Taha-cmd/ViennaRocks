@@ -16,11 +16,7 @@ spec:
       containers:
       - name: redis
         env:
-          - name: REDIS_PASSWORD
-            valueFrom: 
-              secretKeyRef:
-                name: {{ .Release.Name }}-secrets
-                key: REDIS_PASSWORD
+          {{- include "secret" (dict "name" .Release.Name "key" "REDIS_PASSWORD") | indent 12  }}
         image: bitnami/redis:latest
         resources:
           limits:

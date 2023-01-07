@@ -17,18 +17,10 @@ spec:
         - name: api
           image: se22m001/viennarocks:latest
           env:
-            - name: TicketMasterApiKey
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: TicketMasterApiKey
+            {{- include "secret" (dict "name" .Release.Name "key" "TicketMasterApiKey") | indent 12  }}
+            {{- include "secret" (dict "name" .Release.Name "key" "REDIS_CONNECTION_STRING") | indent 12  }}
             - name: ASPNETCORE_ENVIRONMENT
               value: {{ if .Values.isDevelopment }}DEVELOPMENT{{ else }}Production{{ end }}
-            - name: REDIS_CONNECTION_STRING
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Release.Name }}-secrets
-                  key: REDIS_CONNECTION_STRING
           resources:
             limits:
               memory: "128Mi"
